@@ -1,0 +1,27 @@
+<launch>
+ <!-- -->
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+  <node name="track_node"  pkg="rplidar_track"  type="track_node" output="screen"><!--  -->
+    <param name="keep_distance" type="double" value="100"/><!--cm, rplidar to wall -->
+    <param name="wall_position"  type="int"  value="2"/><!--1: left side, 2 : right side -->
+    <param name="fld"  type="double"  value="200"/><!--cm -->
+    <param name="wheel_base"  type="double"  value="0.5"/><!--m -->
+    <param name="calc_control_period"  type="double"  value="0.2"/><!--s -->
+    <param name="keep_speed" type="double" value="2"/><!--m/s -->
+    <param name="min_keep_speed" type="double" value="0.1"/><!--m/s-->
+    <param name="frame_id"  type="string" value="laser"/>
+    <!-- filter-->
+    <param name="is_twist_filter"  type="bool" value="false"/>
+    <param name="lateral_accel_limit"  type="double" value="5.0"/>
+    <param name="lowpass_gain_linear"  type="double" value="0.3"/>
+    <param name="lowpass_gain_angular"  type="double" value="0.3"/>
+    <!--pid-->
+    <param name="kp" type="double" value="0.024"/>
+    <param name="ki" type="double" value="0.01"/>
+    <param name="kd" type="double" value="0.001"/>
+    <!--algorithm-->
+    <param name="method" type="int" value="2"/><!--1:pure, 2:pid-->
+    
+    
+  </node>
+</launch>

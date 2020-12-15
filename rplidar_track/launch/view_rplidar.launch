@@ -1,0 +1,9 @@
+<!--
+  Used for visualising rplidar in action.  
+  It requires rplidar.launch.
+ -->
+
+<launch>
+  <include file="$(find rplidar_track)/launch/track.launch" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rplidar_track)/rviz/rplidar.rviz" />
+</launch>
